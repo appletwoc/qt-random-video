@@ -8,8 +8,9 @@
 
 class SkipPlayer: public QWidget{
 public:
-	SkipPlayer(const char** videos, int n_videos, QVideoWidget* video_window);
+	SkipPlayer(const char** videos, int n_videos);
 
+	void setOutput(QVideoWidget* video_window);
 	void getRandomVideo();
 	void playVideo() const;
 

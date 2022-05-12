@@ -1,16 +1,19 @@
 #include "skip_player.hpp"
 #include <iostream>
 
-SkipPlayer::SkipPlayer(const char** videos, int n_videos, QVideoWidget* video_window){
+SkipPlayer::SkipPlayer(const char** videos, int n_videos){
 	// Set the media player to the play videos
 	m_player = new QMediaPlayer;
-	m_player->setVideoOutput(video_window);
 
 	m_n_videos = n_videos;
 	m_last_played = -1;
 	
 	// Allocate the paths for the videos
 	m_video_array = videos;
+}
+
+void SkipPlayer::setOutput(QVideoWidget* video_window){
+	this->m_player->setVideoOutput(video_window);
 }
 
 void SkipPlayer::getRandomVideo(){

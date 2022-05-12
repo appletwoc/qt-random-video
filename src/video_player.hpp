@@ -5,17 +5,17 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QVideoWidget>
-#include <QVBoxLayout>
+#include <QBoxLayout>
 
-class VideoButton: public QWidget{
+class VideoPlayer: public QWidget{
 public:
-	VideoButton(const char** videos, int n_videos);
+	VideoPlayer(const char** videos, int n_videos);
 
 	void playMedia() const;
 
 private:
-	QPushButton* m_randomize;
-	QVBoxLayout* m_layout;
+	QPushButton* m_randomize_button;
+	// QBoxLayout* m_layout;
 	QVideoWidget* m_viewing_window;
 	SkipPlayer* m_video_player;
 };

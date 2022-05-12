@@ -6,7 +6,8 @@
 #include <QtMultimediaWidgets>
 #include <random>
 
-class SkipPlayer: public QWidget{
+// Possibly remove QWidget from SkipPlayer?
+class SkipPlayer{
 public:
 	SkipPlayer(const char** videos, int n_videos);
 

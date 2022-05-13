@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.22)
 
 # /usr/lib64 is where the .cmake files are
-set(CMAKE_PREFIX_PATH /usr/include/qt5 /usr/lib64)
+set(CMAKE_PREFIX_PATH /usr/lib64)
+
+set(CMAKE_AUTOMOC ON)
 
 # Project name
 project(main)

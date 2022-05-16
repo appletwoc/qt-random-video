@@ -5,25 +5,29 @@
 #include <QtMultimedia>
 #include <QPushButton>
 #include <QVideoWidget>
+#include <QFileDialog>
 #include <QBoxLayout>
+#include <QDir>
 #include <random>
 
 class VideoPlayer: public QWidget{
 public:
-	VideoPlayer(const char** videos, int n_videos);
+	VideoPlayer();
 
 	void getRandomVideo();
 	void playMedia();
 
+
 private slots:
 	void mediaStatusChanged(QMediaPlayer::MediaStatus state);
+	void openFile();	
 
 private:
 	QPushButton* m_randomize_button;
+	QPushButton* m_open;
 	QVideoWidget* m_viewing_window;
 	QMediaPlayer* m_player;
-	const char** m_video_array;
-	int m_n_videos;
+	QStringList m_video_array;
 	int m_last_played;
 	int m_current_video;
 };

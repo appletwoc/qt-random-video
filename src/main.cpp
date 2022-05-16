@@ -8,7 +8,7 @@ int main(int argc, char **argv){
 	////////////////////////////////
 	
 	// Number of videos //
-	int n_videos = 5;
+	const int n_videos = 5;
 
 	// Video paths //
 	const char* vids[n_videos] = {

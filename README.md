@@ -1,5 +1,5 @@
 # Random Video
-A Qt5 program that plays a video until a left click. Then, a new random video is selected.
+A Qt5 program that plays a video until the Randomize button is hit. Once clicked, a new random video is selected.
 
 ## Prerequisites
 Make sure you have Qt5 installed. And locate the Qt5 files. Install Qt5 with `brew`
@@ -21,16 +21,7 @@ to clone the repository into the current directory. Run `cd qt-random-video` to 
 project directory.
 
 ### Choosing Videos
-*This is a temporary solution to get videos playing until I complete the file dialog*<br>
-Open the `src` directory to find `main.cpp`. Open `main.cpp` in a text editor. In the file
-there will be a section that you will modify to add the paths of videos. Delete **all** the paths
-already there (Since those videos are only on my computer), and add your own paths. The path should be
-of the form
-```
-"/home/dcruz/Videos/.../video.mp4",
-```
-Don't forget the comma after the path. Make sure to also set the variable `n_videos` 
-appropriately to the number of videos added.
+Click the Open... button and select one or more videos to play.
 
 --- 
 
@@ -44,5 +35,4 @@ A program `main` is in the directory. Run it with
 ```
 ./main
 ```
-Maximize the window with the menu buttons, and if you have more than one video the
-Randomize button should pick another video at random.
+If you have more than one video the Randomize button will pick another video at random.

@@ -51,11 +51,18 @@ VideoPlayer::VideoPlayer(){
 }
 
 void VideoPlayer::openFile(){
-	m_video_array = QFileDialog::getOpenFileNames(this, "Open video..", QDir::homePath(),
+	m_player->pause();
+	QStringList selection = QFileDialog::getOpenFileNames(this, "Open video..", QDir::homePath(),
 														 "Videos (*.mp4)");
 
-	if(m_video_array.size() != 0){
+	if(selection.size() != 0){
+		m_video_array = selection;
+		m_player->stop();
+		m_randomize_button->setText("Play");
 		m_randomize_button->setEnabled(true);
+	}
+	else{
+		m_player->play();
 	}
 }
 
@@ -90,8 +97,6 @@ void VideoPlayer::playMedia(){
 	this->m_viewing_window->show();
 	m_randomize_button->setText("Randomize");
 	
-	if(m_video_array.size() != 0){
-		this->getRandomVideo();
-		this->m_player->play();
-	}
+	this->getRandomVideo();
+	this->m_player->play();
 }

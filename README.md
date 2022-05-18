@@ -33,7 +33,7 @@ When running the installer, keep hitting next. The default settings should be fi
 
 ### Windows
 Follow these steps withn Qt Creator
-1. Go to File &#8594 New File or Project...
+1. Go to File &#8594; New File or Project...
 2. On the left panel under Import Project select Git Clone
 3. In the Repository field, input
 ```
@@ -41,9 +41,9 @@ https://github.com/appletwoc/reelz-simulator.git
 ```
 and click Finish
 4. Set up a kit. In the kit select:
-- Device Type: Desktop
-- C++ Compiler: MinGW 64 bit
-- CMake tool
+    - Device Type: Desktop
+    - C++ Compiler: MinGW 64 bit
+    - CMake tool
 5. Then click Configure the Project
 6. Bottom left hit the play button to build the project
 
@@ -54,11 +54,6 @@ https://github.com/appletwoc/reelz-simulator.git
 ```
 to clone the repository into the current directory. Run `cd reelz-simulator` to move into the
 project directory.
-
-#### Choosing Videos
-Click the Open... button and select one or more videos to play.
-
---- 
 
 Create a build directory `mkdir build` and `cd build`. Then, run
 ```
@@ -71,3 +66,6 @@ A program `Reelze Simulator` is in the directory. Run it with
 ./Reelz\ Simulator
 ```
 If you have more than one video the Randomize button will pick another video at random.
+
+# Choosing Videos
+Click the Open... button and select one or more videos to play.

@@ -40,6 +40,7 @@ Follow these steps withn Qt Creator
 https://github.com/appletwoc/reelz-simulator.git
 ```
 and click Finish
+
 4. Set up a kit. In the kit select:
   - Device Type: Desktop
   - C++ Compiler: MinGW 64 bit

@@ -41,9 +41,9 @@ https://github.com/appletwoc/reelz-simulator.git
 ```
 and click Finish
 4. Set up a kit. In the kit select:
-    - Device Type: Desktop
-    - C++ Compiler: MinGW 64 bit
-    - CMake tool
+  - Device Type: Desktop
+  - C++ Compiler: MinGW 64 bit
+  - CMake tool	
 5. Then click Configure the Project
 6. Bottom left hit the play button to build the project
 

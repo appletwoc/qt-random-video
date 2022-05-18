@@ -8,6 +8,7 @@
 #include <QFileDialog>
 #include <QBoxLayout>
 #include <QDir>
+#include <chrono>
 #include <random>
 
 class VideoPlayer: public QWidget{
@@ -20,11 +21,15 @@ public:
 
 private slots:
 	void mediaStatusChanged(QMediaPlayer::MediaStatus state);
-	void openFile();	
+	void openFile();
+	void aboutMenu();
+	void helpMenu();
 
 private:
 	QPushButton* m_randomize_button;
 	QPushButton* m_open;
+	QPushButton* m_about;
+	QPushButton* m_help;
 	QVideoWidget* m_viewing_window;
 	QMediaPlayer* m_player;
 	QStringList m_video_array;

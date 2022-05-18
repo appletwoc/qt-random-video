@@ -15,18 +15,32 @@ VideoPlayer::VideoPlayer(){
 	// Not currently playing video
 	m_current_video = -1;
 
-	// Create the button
-	const QSize btnSize = QSize(200, 40);
+	
+	const QSize sizeLong = QSize(200, 40);
+	const QSize sizeSmall = QSize(100, 40);
+
+	// Create the random button
 	m_randomize_button = new QPushButton("Play");
-	m_randomize_button->setFixedSize(btnSize);
+	m_randomize_button->setFixedSize(sizeLong);
 	m_randomize_button->setEnabled(false);
 
+	// Create the Open... button
 	m_open = new QPushButton("Open...");
-	m_open->setFixedSize(btnSize);
+	m_open->setFixedSize(sizeLong);
+
+	// Create the About button
+	m_about = new QPushButton("About");
+	m_about->setFixedSize(sizeSmall);
+
+	// Create the Help Button
+	m_help = new QPushButton("Help");
+	m_help->setFixedSize(sizeSmall);
 
 	// Connect the button to a function
 	connect(m_randomize_button, &QPushButton::clicked, this, &VideoPlayer::playMedia);
 	connect(m_open, &QPushButton::clicked, this, &VideoPlayer::openFile);
+	connect(m_about, &QPushButton::clicked, this, &VideoPlayer::aboutMenu);
+	connect(m_help, &QPushButton::clicked, this, &VideoPlayer::helpMenu);
 
 	// Connect m_player
 	connect(m_player, &QMediaPlayer::mediaStatusChanged, this, &VideoPlayer::mediaStatusChanged);
@@ -37,6 +51,8 @@ VideoPlayer::VideoPlayer(){
 	buttons->setContentsMargins(0, 0, 0, 0);
 	buttons->addWidget(m_randomize_button);
 	buttons->addWidget(m_open);
+	buttons->addWidget(m_about);
+	buttons->addWidget(m_help);
 	
 
 	QBoxLayout* main_layout = new QVBoxLayout;
@@ -66,27 +82,30 @@ void VideoPlayer::openFile(){
 	}
 }
 
+void VideoPlayer::aboutMenu(){
+
+}
+
+void VideoPlayer::helpMenu(){
+
+}
+
 
 void VideoPlayer::getRandomVideo(){
-	std::random_device rand;
-	std::mt19937 rng(rand());
+	std::mt19937 rng(std::chrono::high_resolution_clock::now().time_since_epoch().count());
 
-	
 	do{
 		std::uniform_int_distribution<std::mt19937::result_type>dist6(0, m_video_array.size() - 1);
 		m_current_video = dist6(rng);
 	} while(m_current_video == m_last_played && m_video_array.size() > 1);
 	
-	    m_last_played = m_current_video;
+	m_last_played = m_current_video;
 
-		this->m_player->setMedia(QUrl::fromLocalFile(this->m_video_array.at(m_current_video)));
+	this->m_player->setMedia(QUrl::fromLocalFile(this->m_video_array.at(m_current_video)));
 }
 
 void VideoPlayer::mediaStatusChanged(QMediaPlayer::MediaStatus state){
-	// std::cout << "changed to state: " << state << '\n';
 	if(state == QMediaPlayer::EndOfMedia){
-		// std::cout << "Ended media\n";
-		// this->m_player->setPosition(0);
 		this->m_player->setMedia(QUrl::fromLocalFile(this->m_video_array.at(m_current_video)));
 		this->m_player->play();
 	}

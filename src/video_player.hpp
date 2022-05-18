@@ -8,6 +8,9 @@
 #include <QFileDialog>
 #include <QBoxLayout>
 #include <QDir>
+#include <QMessageBox>
+
+// For randomize function
 #include <chrono>
 #include <random>
 
@@ -18,7 +21,6 @@ public:
 	void getRandomVideo();
 	void playMedia();
 
-
 private slots:
 	void mediaStatusChanged(QMediaPlayer::MediaStatus state);
 	void openFile();
@@ -26,7 +28,7 @@ private slots:
 	void helpMenu();
 
 private:
-	QPushButton* m_randomize_button;
+	QPushButton* m_next;
 	QPushButton* m_open;
 	QPushButton* m_about;
 	QPushButton* m_help;

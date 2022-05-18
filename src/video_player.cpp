@@ -1,5 +1,4 @@
 #include "video_player.hpp"
-#include <iostream>
 
 VideoPlayer::VideoPlayer(){
 	m_viewing_window = new QVideoWidget;
@@ -15,14 +14,13 @@ VideoPlayer::VideoPlayer(){
 	// Not currently playing video
 	m_current_video = -1;
 
-	
 	const QSize sizeLong = QSize(200, 40);
 	const QSize sizeSmall = QSize(100, 40);
 
 	// Create the random button
-	m_randomize_button = new QPushButton("Play");
-	m_randomize_button->setFixedSize(sizeLong);
-	m_randomize_button->setEnabled(false);
+	m_next = new QPushButton("Play");
+	m_next->setFixedSize(sizeLong);
+	m_next->setEnabled(false);
 
 	// Create the Open... button
 	m_open = new QPushButton("Open...");
@@ -37,7 +35,7 @@ VideoPlayer::VideoPlayer(){
 	m_help->setFixedSize(sizeSmall);
 
 	// Connect the button to a function
-	connect(m_randomize_button, &QPushButton::clicked, this, &VideoPlayer::playMedia);
+	connect(m_next, &QPushButton::clicked, this, &VideoPlayer::playMedia);
 	connect(m_open, &QPushButton::clicked, this, &VideoPlayer::openFile);
 	connect(m_about, &QPushButton::clicked, this, &VideoPlayer::aboutMenu);
 	connect(m_help, &QPushButton::clicked, this, &VideoPlayer::helpMenu);
@@ -49,7 +47,7 @@ VideoPlayer::VideoPlayer(){
 	// For the randomize button
 	QBoxLayout* buttons = new QHBoxLayout;
 	buttons->setContentsMargins(0, 0, 0, 0);
-	buttons->addWidget(m_randomize_button);
+	buttons->addWidget(m_next);
 	buttons->addWidget(m_open);
 	buttons->addWidget(m_about);
 	buttons->addWidget(m_help);
@@ -74,8 +72,8 @@ void VideoPlayer::openFile(){
 	if(selection.size() != 0){
 		m_video_array = selection;
 		m_player->stop();
-		m_randomize_button->setText("Play");
-		m_randomize_button->setEnabled(true);
+		m_next->setText("Play");
+		m_next->setEnabled(true);
 	}
 	else{
 		m_player->play();
@@ -83,11 +81,39 @@ void VideoPlayer::openFile(){
 }
 
 void VideoPlayer::aboutMenu(){
-
+	QMessageBox about(QMessageBox::NoIcon, QString("About"), QString("About"));
+	about.setStyleSheet("QLabel{min-width: 300px;}");
+	about.setStandardButtons(QMessageBox::Close);
+	about.setTextFormat(Qt::RichText);
+	about.setText(
+				  "<p style='text-align:center'>"
+				  "<b>Reelz Simulator</b><br>"
+				  "version 1.0<br>"
+				  "<br>"
+				  "Developed exclusively for ruly_m<br>"
+				  "<br>"
+				  "Copyright 2022<br>"
+				  "Eat Butt Industries"
+				  "</p>");
+	about.exec();
 }
 
 void VideoPlayer::helpMenu(){
-
+	QMessageBox help(QMessageBox::NoIcon, QString("Help"), QString("Help"));
+	help.setStyleSheet("QLabel{min-width: 500px;}");
+	help.setStandardButtons(QMessageBox::Close);		
+	help.setTextFormat(Qt::RichText);
+	help.setText(
+				 "<ol>"
+				 "<li> Click \"Open...\". </li>"
+				 "<li> Select the first file, scroll all the way down, hold down the \"shift\" key & select the last file.</li>"
+				"<li> Click \"select\" to select the files.</li>"
+				 "<li> Click \"play\" to play the first reel.</li>"
+				 "<li> Click \"next\" to go to the next reel.</li>"
+				 "If this doesn't work, well, you're shit outta luck."
+				 "</ol>"
+				 );
+	help.exec();
 }
 
 
@@ -114,7 +140,7 @@ void VideoPlayer::mediaStatusChanged(QMediaPlayer::MediaStatus state){
 
 void VideoPlayer::playMedia(){
 	this->m_viewing_window->show();
-	m_randomize_button->setText("Randomize");
+	m_next->setText("Next");
 	
 	this->getRandomVideo();
 	this->m_player->play();

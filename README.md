@@ -24,21 +24,35 @@ But it could be different on your system.
 
 ### For Windows
 For building in Windows, you will need
-1. cmake and git
+1. CMake and Git
 2. Qt Creator and Qt 5.12.x from [here](https://www.qt.io/offline-installers). Install the minGW 64 bit versions.
 3. The installer in the **Download** section in this [link](http://forum.doom9.org/showthread.php?t=156191).
-When running the installer, hit next. The default settings should be fine
+When running the installer, keep hitting next. The default settings should be fine
 
 ## Building and Running
+
 ### Windows
-Open Qt Creator
+Follow these steps withn Qt Creator
+1. Go to File &#8594 New File or Project...
+2. On the left panel under Import Project select Git Clone
+3. In the Repository field, input
+```
+https://github.com/appletwoc/reelz-simulator.git
+```
+and click Finish
+4. Set up a kit. In the kit select:
+- Device Type: Desktop
+- C++ Compiler: MinGW 64 bit
+- CMake tool
+5. Then click Configure the Project
+6. Bottom left hit the play button to build the project
 
 ### Linux and macOS
 Run the command
 ```
-git clone https://github.com/appletwoc/qt-random-video.git
+https://github.com/appletwoc/reelz-simulator.git
 ```
-to clone the repository into the current directory. Run `cd qt-random-video` to move into the
+to clone the repository into the current directory. Run `cd reelz-simulator` to move into the
 project directory.
 
 #### Choosing Videos
@@ -52,8 +66,8 @@ cmake -DCMAKE_PREFIX_PATH=/path/to/qt5 ..
 make
 ```
 The `DCMAKE_PREFIX_PATH` should be the path where Qt5 is installed.<br>
-A program `main` is in the directory. Run it with
+A program `Reelze Simulator` is in the directory. Run it with
 ```
-./main
+./Reelz\ Simulator
 ```
 If you have more than one video the Randomize button will pick another video at random.

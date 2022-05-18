@@ -8,7 +8,7 @@ endif()
 set(CMAKE_AUTOMOC ON)
 
 # Project name
-project(main)
+project(reelz)
 
 # Gather all files and store into the
 # (SOURCE_FILES) variable
@@ -20,6 +20,7 @@ file(GLOB_RECURSE SOURCE_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} src/*.cpp)
 find_package(Qt5 COMPONENTS Widgets Multimedia MultimediaWidgets REQUIRED)
 
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
+set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES OUTPUT_NAME "Reelz Simulator")
 
 # Link Qt library
 target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Widgets Qt5::Multimedia Qt5::MultimediaWidgets)

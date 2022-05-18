@@ -67,6 +67,3 @@ A program `Reelze Simulator` is in the directory. Run it with
 ./Reelz\ Simulator
 ```
 If you have more than one video the Randomize button will pick another video at random.
-
-# Choosing Videos
-Click the Open... button and select one or more videos to play.

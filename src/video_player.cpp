@@ -90,7 +90,7 @@ void VideoPlayer::aboutMenu(){
 				  "<b>Reelz Simulator</b><br>"
 				  "version 1.0<br>"
 				  "<br>"
-				  "Developed exclusively for ruly_m<br>"
+				  "Developed exclusively for<br> ruly_m<br>"
 				  "<br>"
 				  "Copyright 2022<br>"
 				  "Eat Butt Industries"
